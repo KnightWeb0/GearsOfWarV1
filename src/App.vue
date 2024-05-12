@@ -1,5 +1,5 @@
 <script setup  lang="ts">
-import { ref } from 'vue';
+import { ref,computed } from 'vue';
 //this is where the input will store its value in this ref 
 const gearsName = ref ('');
 
@@ -20,15 +20,26 @@ const gearsArray = ref([
 //this will store the rank of the gears
 const gearRanksArray = ref([]);
 
+
+
+    // Convert the array of items to a string
+    // const stringItems = computed(() => items.value.join(''));
+
+const convertGearsToStrings = computed(() => gearRanksArray.value.join(''));
+
+
 //this will push the newly created input into the array 
 const addGearToArray = () => {
+
+
   //here we are pushing the 
   gearsArray.value.push({
    id: gearsArray.value.length + 1, 
    fullname: gearsName.value ,
-   rank: gearRanksArray.value, 
-
+   rank:convertGearsToStrings.value,
 })
+
+convertGearsToStrings.value = '';
 gearRanksArray.value = '';
 gearsName.value = '';
 
