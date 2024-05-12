@@ -1,7 +1,7 @@
 <script setup  lang="ts">
 import { ref } from 'vue';
 //this is where the input will store its value in this ref 
-const gearsInput = ref ('');
+const gearsName = ref ('');
 
 const gearsArray = ref([
 {
@@ -22,7 +22,15 @@ const gearRanksArray = ref([]);
 
 //this will push the newly created input into the array 
 const addGearToArray = () => {
-  
+  //here we are pushing the 
+  gearsArray.value.push({
+   id: gearsArray.value.length + 1, 
+   fullname: gearsName.value ,
+   rank: gearRanksArray.value, 
+
+})
+gearRanksArray.value = '';
+gearsName.value = '';
 
 }
 
@@ -32,7 +40,9 @@ const addGearToArray = () => {
 
 <h1>  Gears Registration </h1>
 
-<input type="text" v-model="gearsInput">
+<input type="text" v-model="gearsName"> 
+
+<button @click="addGearToArray">  Add Gear </button>
 
 <div>
   <hr>
@@ -102,7 +112,7 @@ General
 
 <br>
 {{ gearRanksArray  }}
-{{ gearsInput }}
+{{ gearsName }}
 
 <br>
 <br>
