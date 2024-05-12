@@ -18,9 +18,10 @@ const gearsArray = ref([
 
 ]);
 //this will store the rank of the gears
-const gearRanksArray = ref([]);
+const gearRanksArray = ref(['']);
 
-
+       // Define your array of items
+     //  const items = ref(['item1', 'item2', 'item3']);
 
     // Convert the array of items to a string
     // const stringItems = computed(() => items.value.join(''));
@@ -40,7 +41,7 @@ const addGearToArray = () => {
 })
 
 convertGearsToStrings.value = '';
-gearRanksArray.value = '';
+
 gearsName.value = '';
 
 }
@@ -50,12 +51,10 @@ gearsName.value = '';
 <template>
 
 <h1>  Gears Registration </h1>
-
-<input type="text" v-model="gearsName"> 
-
-<button @click="addGearToArray">  Add Gear </button>
-
+<hr>
 <div>
+
+  <h2> Rank:  {{convertGearsToStrings }}</h2>
   <hr>
   <label>
 <input type="checkbox" value="Private" v-model="gearRanksArray">
@@ -75,7 +74,7 @@ Sergeant
 <br>
 
 <label>
-<input type="checkbox" value="Chief Sergeant" v-model="gearRanksArray">
+<input type="checkbox" value="Chief Sergeant" v-model="gearkRansArray">
 Chief Sergeant
 </label>
 
@@ -117,17 +116,28 @@ Colonel
 <input type="checkbox" value="General" v-model="gearRanksArray">
 General
 </label>
-
+<hr>
 
 </div>
 
-<br>
-{{ gearRanksArray  }}
-{{ gearsName }}
 
-<br>
-<br>
 
+  <h2> Gears name:   {{ gearsName }} 
+  
+<br>
+<br>
+    <input type="text" v-model="gearsName"> 
+    <button @click="addGearToArray">  Add Gear </button>
+  
+  </h2> 
+ 
+
+<hr>
+
+
+
+
+<h2> Our Gears </h2>
 <div v-for="gear in gearsArray" :key="gear.id"> 
  {{ gear.rank }} {{ gear.fullname }}
 </div>
